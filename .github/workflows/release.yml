@@ -34,7 +34,7 @@ jobs:
       - name: Copy viewer into package
         run: uv run python scripts/copy_web_to_package.py
       - name: Build distributions
-        run: uv build
+        run: uv build --wheel
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
       - name: Create GitHub release

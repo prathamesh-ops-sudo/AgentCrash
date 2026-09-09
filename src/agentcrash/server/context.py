@@ -30,10 +30,14 @@ def get_scenarios_root(explicit: str | None = None) -> str:
     env = os.environ.get("AGENTCRASH_SCENARIOS")
     if env:
         return env
+    # Scenarios shipped inside the installed package (for a clean wheel install).
+    packaged = Path(__file__).resolve().parents[2] / "scenarios"
+    if packaged.is_dir():
+        return str(packaged)
     # A repository checkout is preferred so scenarios stay versioned with code.
     if Path(DEFAULT_SCENARIOS).is_dir():
         return DEFAULT_SCENARIOS
-    return str(Path(user_data_dir()) / "scenarios")
+    return str(user_data_dir() / "scenarios")
 
 
 def open_store(data_dir: str | None = None) -> tuple[EventStore, BlobStore, Path]:

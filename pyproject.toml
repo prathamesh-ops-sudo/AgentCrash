@@ -9,6 +9,9 @@ dependencies = [
     "rich>=13.7,<14",
     "pydantic>=2.7,<3",
     "PyYAML>=6.0,<7",
+    "fastapi>=0.115,<1",
+    "uvicorn>=0.30,<1",
+    "sse-starlette>=2.1,<3",
 ]
 license = { text = "Apache-2.0" }
 authors = [{ name = "Prathamesh Dabir" }]
@@ -25,11 +28,6 @@ classifiers = [
 agentcrash = "agentcrash.cli.app:app"
 
 [project.optional-dependencies]
-server = [
-    "fastapi>=0.115,<1",
-    "uvicorn>=0.30,<1",
-    "sse-starlette>=2.1,<3",
-]
 provider = [
     "httpx>=0.27,<1",
 ]
@@ -45,7 +43,6 @@ test = [
     "httpx>=0.27,<1",
 ]
 dev = [
-    "agentcrash[server]",
     "agentcrash[provider]",
     "agentcrash[test]",
 ]
@@ -63,11 +60,17 @@ packages = ["src/agentcrash"]
 include = [
     "/src/agentcrash/py.typed",
     "/src/agentcrash/server/static/**",
-    "/scenarios/**",
 ]
+[tool.hatch.build.targets.wheel.force-include]
+scenarios = "agentcrash/scenarios"
+"src/agentcrash/server/static" = "agentcrash/server/static"
+
 
 [tool.hatch.build.targets.sdist]
 include = ["/src", "/scenarios", "/web", "/tests", "/docs"]
+
+[tool.hatch.build.targets.sdist.force-include]
+"src/agentcrash/server/static" = "src/agentcrash/server/static"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
