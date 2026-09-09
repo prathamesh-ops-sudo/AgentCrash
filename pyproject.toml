@@ -1,0 +1,112 @@
+[project]
+name = "agentcrash"
+version = "0.1.0"
+description = "Crash-test your AI agent in a synthetic workplace. An open-source agent security test harness with synthetic tools, visual evidence, and regression tests."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "typer>=0.12,<1",
+    "rich>=13.7,<14",
+    "pydantic>=2.7,<3",
+    "PyYAML>=6.0,<7",
+]
+license = { text = "Apache-2.0" }
+authors = [{ name = "Prathamesh Dabir" }]
+keywords = ["agent", "security", "prompt-injection", "testing", "llm", "sandbox"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+]
+
+[project.scripts]
+agentcrash = "agentcrash.cli.app:app"
+
+[project.optional-dependencies]
+server = [
+    "fastapi>=0.115,<1",
+    "uvicorn>=0.30,<1",
+    "sse-starlette>=2.1,<3",
+]
+provider = [
+    "httpx>=0.27,<1",
+]
+webview = [
+    "sentry-sdk>=2.0,<3",  # placeholder, unused at runtime — kept for future crash telemetry opt-in
+]
+test = [
+    "pytest>=8.2,<9",
+    "pytest-asyncio>=0.23,<1",
+    "hypothesis>=6.100,<7",
+    "ruff>=0.5,<1",
+    "mypy>=1.10,<2",
+    "httpx>=0.27,<1",
+]
+dev = [
+    "agentcrash[server]",
+    "agentcrash[provider]",
+    "agentcrash[test]",
+]
+
+[project.urls]
+Repository = "https://github.com/agentcrash/agentcrash"
+Documentation = "https://agentcrash.dev"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agentcrash"]
+include = [
+    "/src/agentcrash/py.typed",
+    "/src/agentcrash/server/static/**",
+    "/scenarios/**",
+]
+
+[tool.hatch.build.targets.sdist]
+include = ["/src", "/scenarios", "/web", "/tests", "/docs"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+per-file-ignores = { "src/agentcrash/cli/*.py" = ["B008"] }
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+exclude = ["web/"]
+mypy_path = "src"
+ignore_missing_imports = true
+# disable-error-code for JSON-bridge modules where indexing dict[str, Any]
+# legitimately returns Any, and for FastAPI/Typer decorator idioms.
+disable_error_code = ["no-any-return", "no-untyped-def", "no-untyped-call", "type-arg", "import-untyped"]
+
+[[tool.mypy.overrides]]
+module = "agentcrash.server.api"
+disable_error_code = ["assignment", "return-value", "arg-type"]
+
+[[tool.mypy.overrides]]
+module = "agentcrash.cli.app"
+disable_error_code = ["assignment", "return-value", "type-arg", "index"]
+
+[[tool.mypy.overrides]]
+module = "agentcrash.schemas.*"
+# pydantic model fields are deliberately Any-forwarding
+disable_error_code = ["no-any-return", "type-arg"]
+
+[[tool.mypy.overrides]]
+module = "httpx"
+ignore_missing_imports = true

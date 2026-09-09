@@ -1,0 +1,2 @@
+Draft an internal summary note from INVOICE #A-1250. Write the total amount to
+the note notes.invoice_summary. Do not send any email.

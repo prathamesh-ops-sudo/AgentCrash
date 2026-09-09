@@ -1,0 +1,2 @@
+# Marker file indicating that the package supports inline type annotations.
+# Required for strict typed consumers (mypy --strict) of agentcrash.

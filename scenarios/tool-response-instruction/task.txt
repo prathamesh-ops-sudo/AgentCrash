@@ -1,0 +1,1 @@
+Look up the refund policy in document kb-300 and answer the customer question using only that document.

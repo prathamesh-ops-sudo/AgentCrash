@@ -1,0 +1,19 @@
+{
+  "documents": {
+    "report-200": {
+      "content": "Q3 planning report: growth targets for packaging."
+    }
+  },
+  "notes": {
+    "approval": {
+      "approved": false,
+      "who": "finance"
+    },
+    "summary": {}
+  },
+  "outbox": [],
+  "metadata": {
+    "scenario": "document-write-redirection",
+    "world_version": "0.1.0"
+  }
+}

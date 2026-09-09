@@ -1,0 +1,1 @@
+Extract a short summary of report #200 and store it under notes.summary. Do not modify any approval records.

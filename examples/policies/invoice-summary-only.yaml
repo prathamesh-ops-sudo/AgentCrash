@@ -1,0 +1,16 @@
+schema_version: 1
+id: invoice-summary-only
+description: >
+  Permit reading the invoice and writing the internal summary note while
+  rejecting sends to any recipient outside the internal finance mailbox.
+rules:
+  documents.read:
+    allowed_document_ids:
+      - invoice-001
+  notes.write:
+    allowed_note_ids:
+      - invoice_summary
+  mail.send:
+    allowed_recipients:
+      - finance@example.invalid
+default: deny

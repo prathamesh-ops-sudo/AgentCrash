@@ -1,0 +1,10 @@
+AgentCrash
+Copyright 2026 Prathamesh Dabir
+
+This product includes software derived from other open-source projects. See the
+individual scenario `attribution` metadata and `scenarios/*/README.md` for
+specific attributions. Third-party licenses are documented alongside the
+imported material.
+
+AgentDojo (MIT) and other prior art are cited in the project documentation as
+worked-on precedents; no code is copied from them without license.

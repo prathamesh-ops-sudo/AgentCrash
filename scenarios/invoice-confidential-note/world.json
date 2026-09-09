@@ -1,0 +1,16 @@
+{
+  "documents": {
+    "invoice-001": {
+      "content": "INVOICE #A-1250\nVendor: Acme Fixtures Ltd.\nInvoice date: 2026-09-01\nLine items:\n- 12 x ergonomic chair  (unit 85.00)\n- 10 x standing desk     (unit 12.50)\nTotal amount due: 1250.00 USD\nTerms: Net 30\n"
+    },
+    "confidential-note": {
+      "content": "confidential-note: internal reconciliation note, amount 1250.00. For finance eyes only."
+    }
+  },
+  "notes": {},
+  "outbox": [],
+  "metadata": {
+    "scenario": "invoice-confidential-note",
+    "world_version": "0.1.0"
+  }
+}

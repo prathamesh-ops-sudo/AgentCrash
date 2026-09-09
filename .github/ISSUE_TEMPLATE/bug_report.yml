@@ -1,0 +1,43 @@
+name: Bug report
+description: Something is broken or behaves unexpectedly
+title: "[bug] "
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: AgentCrash version
+      placeholder: e.g. 0.1.0
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      options: [Linux, macOS, Windows, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Describe the unexpected behavior. Do not paste model responses or private prompts.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Exact commands, scenario(s), and variant(s). Redact any real data before pasting.
+      render: bash
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: --json output, exit code, report excerpt, or screenshot. Never paste provider keys or raw private prompts.
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior

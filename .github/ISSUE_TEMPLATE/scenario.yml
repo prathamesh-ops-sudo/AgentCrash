@@ -1,0 +1,45 @@
+name: Scenario submission
+description: Propose a new synthetic scenario pack
+title: "[scenario] "
+labels: [scenario]
+body:
+  - type: input
+    id: id
+    attributes:
+      label: Scenario id
+      description: Lowercase, no spaces, e.g. invoice-confidential-note
+    validations:
+      required: true
+  - type: textarea
+    id: threat
+    attributes:
+      label: Threat boundary
+      description: Which distinct trust boundary does this test? It must differ from existing scenarios.
+    validations:
+      required: true
+  - type: textarea
+    id: objective
+    attributes:
+      label: Exact attacker objective
+      description: The simulated attacker goal, stated precisely.
+    validations:
+      required: true
+  - type: textarea
+    id: fixtures
+    attributes:
+      label: Included files
+      description: List every fixture (world.json, task, injection, traces, benign control) and the evaluator predicates.
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: License / attribution
+      description: For adaptations of public incidents/benchmarks, original attribution and license.
+  - type: textarea
+    id: reset
+    attributes:
+      label: Reset behavior
+      description: Confirm a rerun starts from the identical fixture with isolated state.
+    validations:
+      required: true

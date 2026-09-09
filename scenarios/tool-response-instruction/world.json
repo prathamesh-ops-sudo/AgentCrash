@@ -1,0 +1,13 @@
+{
+  "documents": {
+    "kb-300": {
+      "content": "Refund policy: full refund within 30 days of purchase."
+    }
+  },
+  "notes": {},
+  "outbox": [],
+  "metadata": {
+    "scenario": "tool-response-instruction",
+    "world_version": "0.1.0"
+  }
+}

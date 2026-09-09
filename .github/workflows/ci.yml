@@ -1,0 +1,101 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint-and-type:
+    name: lint + types (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: uv sync --all-extras
+      - name: Ruff
+        run: uv run ruff check src tests
+      - name: mypy
+        run: uv run mypy src
+
+  tests:
+    name: tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: uv sync --all-extras
+      - name: Deterministic + contract + unit tests
+        run: uv run pytest tests/unit tests/contract tests/integration tests/e2e -q
+
+  web-build:
+    name: web viewer build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: Install + build viewer
+        working-directory: web
+        run: |
+          npm ci
+          npm run build
+
+  wheel:
+    name: wheel build + clean install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: Build viewer
+        working-directory: web
+        run: |
+          npm ci
+          npm run build
+      - name: Copy viewer into package
+        run: uv run python scripts/copy_web_to_package.py
+      - name: Build wheel
+        run: uv build
+      - name: Clean-install smoke test
+        run: |
+          uv venv /tmp/smoke
+          uv pip install --python /tmp/smoke/bin/python dist/agentcrash-0.1.0-py3-none-any.whl
+          /tmp/smoke/bin/agentcrash --version
+          /tmp/smoke/bin/agentcrash doctor --mode demo
+      - name: Upload wheel
+        uses: actions/upload-artifact@v4
+        with:
+          name: agentcrash-wheel
+          path: dist/*.whl

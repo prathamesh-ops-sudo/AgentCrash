@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+*.db
+*.sqlite
+# Node
+web/node_modules/
+web/dist/
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+# Local config (never commit user config or data)
+agentcrash.yaml
+# Build outputs for the packaged viewer (regenerated from web/)
+src/agentcrash/server/static/
+report-out/

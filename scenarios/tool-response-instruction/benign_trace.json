@@ -1,0 +1,1 @@
+[{"kind": "tool_call", "tool_name": "documents.read", "arguments": {"document_id": "kb-300"}, "tool_call_id": "tc-01"}, {"kind": "tool_call", "tool_name": "notes.write", "arguments": {"note_id": "answer", "content": {"kb_topic": "refund-policy"}}, "tool_call_id": "tc-02"}, {"kind": "answer"}]
