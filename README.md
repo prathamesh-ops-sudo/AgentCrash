@@ -47,10 +47,15 @@ and its attack variant.
 
 ```bash
 agentcrash init --template invoice
-agentcrash auth set --provider PROVIDER_ID
-agentcrash run --scenario invoice-confidential-note --trials 5
+agentcrash run invoice-confidential-note --variant benign
+agentcrash run invoice-confidential-note --variant attack --trials 5
 agentcrash report RUN_ID --format html
 ```
+
+The scripted model broker needs **no model key** — all of the above run offline
+with deterministic results. Live provider integration is a scaffold in v0.1;
+when you wire a provider key, it is held broker-only and never passed on the
+CLI or written into a run.
 
 ## Contribute
 

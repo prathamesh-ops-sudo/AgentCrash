@@ -53,8 +53,8 @@ a starting config; nothing about it is executed.
 ## 4. Run a benign trial, then an attack trial
 
 ```bash
-uv run agentcrash run --scenario invoice-confidential-note --variant benign
-uv run agentcrash run --scenario invoice-confidential-note --variant attack
+uv run agentcrash run invoice-confidential-note --variant benign
+uv run agentcrash run invoice-confidential-note --variant attack
 ```
 
 Each run creates a fresh world, executes the trial, evaluates it, and prints a
@@ -110,7 +110,7 @@ Re-run the attack variant under the example policy, then compare the two group
 results side by side:
 
 ```bash
-uv run agentcrash run --scenario invoice-confidential-note --variant attack \
+uv run agentcrash run invoice-confidential-note --variant attack \
     --policy examples/policies/invoice-summary-only.yaml
 uv run agentcrash compare <VULNERABLE_RUN_ID> <BLOCKED_RUN_ID>
 ```

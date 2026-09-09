@@ -84,7 +84,7 @@ service (see [ADR-0001](../adr/0001-synthetic-tool-boundary.md)).
 Apply a policy to a run with:
 
 ```bash
-uv run agentcrash run --scenario invoice-confidential-note \
+uv run agentcrash run invoice-confidential-note \
     --variant attack --policy examples/policies/invoice-summary-only.yaml
 ```
 

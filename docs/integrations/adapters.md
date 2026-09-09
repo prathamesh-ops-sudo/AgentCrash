@@ -117,8 +117,8 @@ test updates.
 
 ```bash
 uv run agentcrash scenarios --validate
-uv run agentcrash run --scenario invoice-confidential-note --variant benign --adapter my-agent
-uv run agentcrash run --scenario invoice-confidential-note --variant attack --adapter my-agent
+uv run agentcrash run invoice-confidential-note --variant benign --adapter my-agent
+uv run agentcrash run invoice-confidential-note --variant attack --adapter my-agent
 uv run agentcrash compare <BASELINE_RUN_ID> <DEFENDED_RUN_ID>
 ```
 
