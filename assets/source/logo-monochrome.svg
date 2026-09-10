@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="AgentCrash mark (monochrome)">
+  <!-- monochrome variant for favicons/watermarks -->
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="#111827"/>
+  <path d="M28 40 h30 q6 0 6 6 v10 h-42" fill="none" stroke="#e5e7eb" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="22" cy="56" r="6" fill="#e5e7eb"/>
+  <path d="M54 52 L70 88 L62 92 L58 76 L44 86 Z" fill="#e5e7eb"/>
+</svg>

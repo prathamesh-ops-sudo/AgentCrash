@@ -6,6 +6,10 @@ See the tool actions an attack causes, then verify your fix. AgentCrash is an
 open-source agent security test harness with synthetic tools, visual evidence,
 and regression tests.
 
+<p align="center">
+  <img src="assets/generated/social-preview.png" alt="AgentCrash: crash-test your AI agent before you trust it. Run one scenario, watch the injection cause a tool action, then prove your fix." width="760"/>
+</p>
+
 > **Scope honesty**: results apply to the listed scenarios and configuration.
 > A passing test is a scoped result, **not** a guarantee that an agent is secure.
 
@@ -38,6 +42,19 @@ collapsed into one score.
 - **Completeness** — does the run have all required evidence?
 
 An incomplete run is never a clean pass.
+
+<details>
+<summary>View a report from the actual build (attack variant)</summary>
+
+This is a real run of `invoice-confidential-note`: the injected
+document redirects a synthetic send that is caught in the local outbox.
+
+<img src="assets/generated/report-shot.png" alt="AgentCrash report: five outcome dimensions (task success, attack attempted, attack succeeded, policy blocked, completeness) plus the event timeline." width="820"/>
+
+</details>
+
+**Example evidence:** [`assets/generated/sample-report.html`](assets/generated/sample-report.html) is the
+standalone HTML report the CLI produces for that run.
 
 ## Test your agent
 
