@@ -14,6 +14,9 @@ or live-capture claim.
 | `viewer-shot.png` | **live capture** of the bundled React viewer | headless Chrome (`agentcrash serve` + `/viewer/`) | actual viewer UI screenshot (1280×1000) | 2026-09-10 | Apache-2.0 |
 | `report-shot.png` | **live capture** of the standalone HTML report | headless Chrome over `assets/generated/sample-report.html` | actual report screenshot (1280×1200) | 2026-09-10 | Apache-2.0 |
 | `sample-report.html` | real `agentcrash report` output (attack variant) | CLI | recorded replay evidence example | 2026-09-10 | Apache-2.0 |
+| `agentcrash-demo-35s.mp4` | rendered by HyperFrames from `videos/agentcrash-promo/index.html` | `npx hyperframes render` + FFmpeg | 35s launch video (1920×1080, 30fps) | 2026-09-10 | Apache-2.0 |
+| `beat-open.png` / `beat-inject.png` / `beat-detect.png` / `beat-fix.png` / `beat-end.png` | frames extracted from the actual rendered MP4 | `ffmpeg -ss <t>` | annotated stills of the 5 beats, used in the README | 2026-09-10 | Apache-2.0 |
+| `demo-storyboard.jpg` | contact sheet from the rendered MP4 | `ffmpeg tile` | 5-frame storyboard strip | 2026-09-10 | Apache-2.0 |
 
 ## Editable sources (`assets/source/`)
 
