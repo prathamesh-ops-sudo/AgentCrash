@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="AgentCrash mark">
+  <defs>
+    <linearGradient id="acg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <!-- test rig around an agent cursor -->
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="url(#acg)"/>
+  <!-- frame / rig -->
+  <path d="M28 40 h30 q6 0 6 6 v10 h-42" fill="none" stroke="#081019" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="22" cy="56" r="6" fill="#081019"/>
+  <!-- cursor -->
+  <path d="M54 52 L70 88 L62 92 L58 76 L44 86 Z" fill="#081019"/>
+  <circle cx="80" cy="44" r="9" fill="#081019" opacity="0.85"/>
+</svg>

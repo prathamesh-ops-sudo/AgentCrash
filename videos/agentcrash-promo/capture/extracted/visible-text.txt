@@ -1,0 +1,7 @@
+
+AgentCrash — crash-test your AI agent before you trust it.
+
+Open-source agent security test harness with synthetic tools, visual evidence, and regression tests.
+Story: invoice summary task -> injected document tries to redirect agent -> canary leak caught in local outbox -> policy blocks the same attack while task still completes.
+
+Install: uvx --from agentcrash==0.1.0 agentcrash demo
