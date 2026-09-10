@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1280px; height:640px; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background:
+      radial-gradient(1200px 500px at 80% -10%, #1b2740 0%, transparent 60%),
+      radial-gradient(900px 500px at 0% 120%, #10203a 0%, transparent 55%),
+      #0b1220;
+    color:#e9eef7;
+    overflow:hidden;
+  }
+  .wrap { padding:64px 72px; height:100%; display:flex; flex-direction:column; justify-content:space-between; }
+  .top { display:flex; align-items:center; gap:16px; }
+  .logo {
+    width:54px; height:54px; border-radius:14px;
+    background:linear-gradient(135deg,#38bdf8,#6366f1);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:26px; color:#081019;
+  }
+  .wordmark { font-size:30px; font-weight:750; letter-spacing:-0.5px; }
+  .wordmark b { color:#38bdf8; }
+  .tag { margin-top:6px; font-size:15px; color:#93a6c8; }
+  .hero { margin-top:44px; }
+  h1 { font-size:58px; line-height:1.06; font-weight:800; letter-spacing:-1px; max-width:900px; }
+  h1 span { color:#38bdf8; }
+  .sub { margin-top:22px; font-size:22px; color:#b8c5de; max-width:820px; line-height:1.4; }
+  .demo {
+    margin-top:36px; background:rgba(255,255,255,0.03);
+    border:1px solid rgba(56,189,248,0.25); border-radius:12px;
+    padding:18px 22px; width:max-content; font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:18px; color:#c9d6ef; display:flex; align-items:center; gap:14px;
+  }
+  .demo .prompt { color:#7dd3fc; }
+  .demo .probe { color:#f59e0b; }
+  .btn {
+    margin-top:34px; display:inline-flex; align-items:center; gap:10px;
+    background:#38bdf8; color:#081019; font-weight:700; font-size:18px;
+    padding:16px 26px; border-radius:12px; width:max-content;
+  }
+  .btn small { font-weight:500; opacity:0.75; }
+  .foot { display:flex; justify-content:space-between; align-items:center; font-size:14px; color:#6f82a6; }
+  .chips { display:flex; gap:10px; }
+  .chip { border:1px solid rgba(255,255,255,0.12); border-radius:999px; padding:6px 14px; font-size:13px; color:#9fb2d3; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="logo">AC</div>
+      <div>
+        <div class="wordmark">Agent<b>Crash</b></div>
+        <div class="tag">open-source agent security test harness</div>
+      </div>
+    </div>
+    <div class="hero">
+      <h1>Crash-test your AI agent <span>before you trust it.</span></h1>
+      <div class="sub">See the tool action an injected document causes, then prove your fix — in a synthetic workplace.</div>
+      <div class="demo">
+        <span class="prompt">agentcrash run invoice-confidential-note --variant attack</span>
+        <span class="probe">▶ canary → outbox</span>
+      </div>
+      <div class="btn">Try the offline demo <small>no API key · no model calls</small></div>
+    </div>
+    <div class="foot">
+      <div>Apache-2.0 · stdlib-first · deterministic replay</div>
+      <div class="chips">
+        <span class="chip">prompt injection</span>
+        <span class="chip">tool policy</span>
+        <span class="chip">regression export</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
