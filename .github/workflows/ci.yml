@@ -91,7 +91,8 @@ jobs:
       - name: Clean-install smoke test
         run: |
           uv venv /tmp/smoke
-          uv pip install --python /tmp/smoke/bin/python dist/agentcrash-0.1.0-py3-none-any.whl
+          # Use a glob so the smoke test is not pinned to one version number.
+          uv pip install --python /tmp/smoke/bin/python dist/agentcrash-*.whl
           /tmp/smoke/bin/agentcrash --version
           /tmp/smoke/bin/agentcrash doctor --mode demo
       - name: Upload wheel
