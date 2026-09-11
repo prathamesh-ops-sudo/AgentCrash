@@ -48,8 +48,11 @@ dev = [
 ]
 
 [project.urls]
-Repository = "https://github.com/agentcrash/agentcrash"
-Documentation = "https://agentcrash.dev"
+Homepage = "https://github.com/prathamesh-ops-sudo/AgentCrash"
+Repository = "https://github.com/prathamesh-ops-sudo/AgentCrash"
+Issues = "https://github.com/prathamesh-ops-sudo/AgentCrash/issues"
+Changelog = "https://github.com/prathamesh-ops-sudo/AgentCrash/blob/master/CHANGELOG.md"
+Documentation = "https://github.com/prathamesh-ops-sudo/AgentCrash/tree/master/docs"
 
 [build-system]
 requires = ["hatchling"]

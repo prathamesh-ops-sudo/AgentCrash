@@ -1,59 +1,60 @@
 # AgentCrash
 
-Crash-test your AI agent in a synthetic workplace.
+**Crash-test your AI agent in a synthetic workplace.**
 
-See the tool actions an attack causes, then verify your fix. AgentCrash is an
-open-source agent security test harness with synthetic tools, visual evidence,
-and regression tests.
+[![CI](https://github.com/prathamesh-ops-sudo/AgentCrash/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/prathamesh-ops-sudo/AgentCrash/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/agentcrash.svg)](https://pypi.org/project/agentcrash/)
+[![Python](https://img.shields.io/pypi/pyversions/agentcrash.svg)](https://pypi.org/project/agentcrash/)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+
+An open-source agent security test harness. Run your agent against a synthetic
+workplace, watch the tool calls an injected instruction actually causes, then
+prove that your fix blocks the attack without breaking the legitimate task.
+
+- **See the action, not just a verdict.** AgentCrash records the exact tool
+  calls an attack causes, in a synthetic world with nothing real in it.
+- **Outcomes stay separate.** Task success, attack attempted, attack succeeded,
+  policy blocked and completeness are reported as distinct dimensions, never
+  collapsed into one fuzzy score.
+- **The fix is testable.** Apply a policy, rerun, and show the attack blocked
+  while the task still completes.
+- **Offline by default.** The bundled replay needs no API key and makes no
+  model calls.
+
+![AgentCrash demo: crash-test your AI agent in a synthetic workplace, watch the injected instruction redirect a send, detect the canary, then block it with a policy](assets/generated/agentcrash-demo.gif)
+
+**[Watch the 35-second walkthrough (MP4)](assets/generated/agentcrash-demo-35s.mp4)**
 
 > **Scope honesty**: results apply to the listed scenarios and configuration.
 > A passing test is a scoped result, **not** a guarantee that an agent is secure.
 
-## Watch the demo
+## Try it in 30 seconds
 
-A 35-second walkthrough of the flagship scenario — no API key, no model calls,
-rendered from the real build:
-
-<p align="center">
-  <a href="assets/generated/agentcrash-demo-35s.mp4">
-    <img src="assets/generated/social-preview.png"
-         alt="AgentCrash demo. Click to play a 35s walkthrough."
-         width="760"/>
-  </a>
-</p>
-
-**Click the image above to play the MP4** (or open
-[`assets/generated/agentcrash-demo-35s.mp4`](assets/generated/agentcrash-demo-35s.mp4)).
-
-The five beats:
-
-<p align="center">
-  <img src="assets/generated/beat-open.png" alt="Beat 1: crash-test your AI agent before you trust it" width="470"/>
-  <img src="assets/generated/beat-inject.png" alt="Beat 2: injected instruction in the invoice" width="470"/>
-</p>
-<p align="center">
-  <img src="assets/generated/beat-detect.png" alt="Beat 3: canary detected in local outbox" width="470"/>
-  <img src="assets/generated/beat-fix.png" alt="Beat 4: policy blocks the same send, task completes" width="470"/>
-</p>
-<p align="center">
-  <img src="assets/generated/beat-end.png" alt="Beat 5: install and run your own check" width="470"/>
-</p>
-
-## Try it
-
-The bundled replay needs no API key and makes no model calls. It runs offline.
+No API key. No model calls. Runs offline.
 
 ```bash
 uvx --from agentcrash==0.1.0 agentcrash demo
 ```
 
-or install and run your own live test:
+Or install it and run your own live test:
 
 ```bash
 uv tool install agentcrash==0.1.0
 agentcrash --version
 agentcrash doctor --mode demo
 ```
+
+## Why AgentCrash
+
+Most answers to "is my agent safe?" are an opinion, a single number, or a
+prompt that someone else wrote. None of them show you what the agent actually
+did when an untrusted document told it to do something else.
+
+AgentCrash gives you that: the real tool requests, the policy decision on each
+one, and the synthetic effect that followed, in a run you can repeat and
+compare. When you then add a control, you rerun the same scenario and show the
+attack blocked with the task still complete. That is the difference between
+claiming a fix and demonstrating one.
 
 ## What a report tells you
 
@@ -81,6 +82,31 @@ document redirects a synthetic send that is caught in the local outbox.
 
 **Example evidence:** [`assets/generated/sample-report.html`](assets/generated/sample-report.html) is the
 standalone HTML report the CLI produces for that run.
+
+<details>
+<summary>See the five demo beats as stills</summary>
+
+<p align="center">
+  <img src="assets/generated/beat-open.png" alt="Beat 1: crash-test your AI agent before you trust it" width="470"/>
+  <img src="assets/generated/beat-inject.png" alt="Beat 2: injected instruction in the invoice" width="470"/>
+</p>
+<p align="center">
+  <img src="assets/generated/beat-detect.png" alt="Beat 3: canary detected in local outbox" width="470"/>
+  <img src="assets/generated/beat-fix.png" alt="Beat 4: policy blocks the same send, task completes" width="470"/>
+</p>
+<p align="center">
+  <img src="assets/generated/beat-end.png" alt="Beat 5: install and run your own check" width="470"/>
+</p>
+
+</details>
+
+## Who it is for
+
+- **Agent builders** who want to test tool-use safety before shipping.
+- **AppSec and AI-security teams** who need evidence, not a demo script.
+- **Researchers** who want a repeatable harness for injection and policy work.
+- **Maintainers** who want a regression test that fails when a policy
+  regresses.
 
 ## Test your agent
 
@@ -126,3 +152,8 @@ tested security boundary.
 ## License
 
 Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
+
+## Star it if it is useful
+
+If AgentCrash saves you from shipping an agent you have not tested, a star
+helps the next person find it.
