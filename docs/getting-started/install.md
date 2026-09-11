@@ -22,13 +22,13 @@ If you are building the bundled web viewer (`svg`/`serve`, the React app under
 Once a release exists, the pinned, verifiable install is:
 
 ```bash
-uvx --from agentcrash==0.1.0 agentcrash demo
+uvx --from agentcrash==0.1.1 agentcrash demo
 ```
 
 or install it as a tool and verify:
 
 ```bash
-uv tool install agentcrash==0.1.0
+uv tool install agentcrash==0.1.1
 agentcrash --version
 agentcrash doctor --mode demo
 ```
