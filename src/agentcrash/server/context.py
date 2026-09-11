@@ -11,8 +11,6 @@ from pathlib import Path
 
 from ..evidence.store import BlobStore, EventStore
 
-DEFAULT_SCENARIOS: str = r"C:\Users\prath\OneDrive\Desktop\AgentCrash\scenarios"
-
 
 def user_data_dir() -> Path:
     if sys.platform == "win32":
@@ -30,13 +28,16 @@ def get_scenarios_root(explicit: str | None = None) -> str:
     env = os.environ.get("AGENTCRASH_SCENARIOS")
     if env:
         return env
-    # Scenarios shipped inside the installed package (for a clean wheel install).
-    packaged = Path(__file__).resolve().parents[2] / "scenarios"
+    # Scenarios shipped inside the installed package, at agentcrash/scenarios
+    # (this file lives at agentcrash/server/context.py).
+    packaged = Path(__file__).resolve().parents[1] / "scenarios"
     if packaged.is_dir():
         return str(packaged)
-    # A repository checkout is preferred so scenarios stay versioned with code.
-    if Path(DEFAULT_SCENARIOS).is_dir():
-        return DEFAULT_SCENARIOS
+    # A repository checkout is preferred so scenarios stay versioned with code
+    # (this file lives at <repo>/src/agentcrash/server/context.py).
+    checkout = Path(__file__).resolve().parents[3] / "scenarios"
+    if checkout.is_dir():
+        return str(checkout)
     return str(user_data_dir() / "scenarios")
 
 
