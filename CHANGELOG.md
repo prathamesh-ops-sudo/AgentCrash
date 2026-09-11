@@ -4,6 +4,28 @@ All notable changes to AgentCrash are recorded here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-09-11
+
+Release-readiness fixes. The 0.1.0 wheel only worked on the maintainer's
+machine; this release makes a clean install work everywhere.
+
+### Fixed
+- **Scenarios were unresolvable off the maintainer's machine.** Discovery fell
+  back to a hardcoded absolute Windows path, and the packaged lookup resolved one
+  directory too high, so `agentcrash run` failed with
+  `scenarios/<id>: not a directory` on any other host and in CI.
+- **`uv sync` failed on a fresh clone.** The wheel build force-included a
+  generated, gitignored directory (`server/static`) that does not exist until the
+  web viewer is built, so contributors and CI could not install the project.
+- **Corrected package metadata.** The PyPI project URLs pointed at a
+  non-existent repository and a placeholder documentation site.
+
+### Changed
+- The web viewer is bundled with hatchling `artifacts`, so builds succeed when
+  the viewer has not been built and include it when it has.
+- CI now runs on the default branch (`master`); it previously targeted `main`
+  and had never executed.
+
 ## [0.1.0] - 2026-09-09
 
 Initial developer release of the open-source agent security test harness.
