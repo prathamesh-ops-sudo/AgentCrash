@@ -1,6 +1,6 @@
 [project]
 name = "agentcrash"
-version = "0.1.1"
+version = "0.1.2"
 description = "Crash-test your AI agent in a synthetic workplace. An open-source agent security test harness with synthetic tools, visual evidence, and regression tests."
 readme = "README.md"
 requires-python = ">=3.12"

@@ -38,5 +38,5 @@ text, crisp high-contrast captions readable with audio off. No voices, no music.
 - The blueprint's flagship storyboard: 0–5s task+clean invoice; 5–13s injection highlights + attempted send; 13–20s canary detected in local outbox; 20–28s policy applied + blocked comparison; 28–35s install command + end card.
 - Brand tokens: bg #0b1220, electric blue #38bdf8, indigo #6366f1, mono #c9d6ef, canary/red #c62828, pass green #2e7d32, amber warn #f59e0b.
 - Keep captions readable with audio off (accessibility requirement). All addresses/accounts/records are synthetic fixtures (example.invalid).
-- Install command to feature: `uvx --from agentcrash==0.1.0 agentcrash demo`.
+- Install command to feature: `uvx --from agentcrash agentcrash demo`.
 - No fabricated benchmark or live-capture claims — screenshots are from the real build.

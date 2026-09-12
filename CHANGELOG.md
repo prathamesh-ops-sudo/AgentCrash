@@ -4,6 +4,20 @@ All notable changes to AgentCrash are recorded here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2026-09-12
+
+Release-pipeline fix. No runtime behavior changes.
+
+### Fixed
+- **The `Release` workflow failed on every tag.** The publish step relied on
+  PyPI *trusted publishing*, which was never configured for the repository, so
+  the OIDC token exchange was refused with
+  `invalid-publisher: valid token, but no corresponding publisher`. Releases
+  were landing on PyPI only when published by hand. The workflow now
+  authenticates with the repository secret `PYPI_API_TOKEN`.
+- Documented `PACKAGE_VERSION` drift: the schema package constant still read
+  `0.1.0`; it now tracks the package version.
+
 ## [0.1.1] - 2026-09-11
 
 Release-readiness fixes. The 0.1.0 wheel only worked on the maintainer's

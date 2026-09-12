@@ -1,6 +1,6 @@
 """AgentCrash — crash-test your AI agent in a synthetic workplace."""
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 from .schemas import PACKAGE_VERSION, SCHEMA_VERSION
 

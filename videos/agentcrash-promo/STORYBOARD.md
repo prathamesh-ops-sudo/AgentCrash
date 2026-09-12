@@ -39,7 +39,7 @@ vulnerable → leaked (red) / fixed → blocked (green). Green chips: task_succe
 ✓ · attack blocked ✓.
 
 ### 5 · Install + End card — 28–35s
-Terminal windows shows `uvx --from agentcrash==0.1.0 agentcrash demo` typing.
+Terminal windows shows `uvx --from agentcrash agentcrash demo` typing.
 End card: wordmark "AgentCrash" + tagline "Crash-test your AI agent before you
 trust it" + mono index (github / pypi / docs).
 

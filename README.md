@@ -33,13 +33,13 @@ prove that your fix blocks the attack without breaking the legitimate task.
 No API key. No model calls. Runs offline.
 
 ```bash
-uvx --from agentcrash==0.1.1 agentcrash demo
+uvx --from agentcrash==0.1.2 agentcrash demo
 ```
 
 Or install it and run your own live test:
 
 ```bash
-uv tool install agentcrash==0.1.1
+uv tool install agentcrash==0.1.2
 agentcrash --version
 agentcrash doctor --mode demo
 ```
